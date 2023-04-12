@@ -1,10 +1,10 @@
+const { connect } = require('mongoose')
 const connectToMongo = require('./db')
 const express = require('express')
-connectToMongo();
+connectToMongo()
 const app = express()
-const port = 3000
+const port = 3000 
 
-// Available endpoints 
 app.use(express.json())
 app.use('/api/auth',require('./routes/auth'))
 app.get('/', (req, res) => {

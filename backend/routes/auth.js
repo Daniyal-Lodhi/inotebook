@@ -1,16 +1,27 @@
-const express = require('express');
-const mongoose = require('mongoose');
-const User = require('../models/User');
+const mongoose = require('mongoose')
+const express = require('express')
+const User = require('../models/User')
 const router = express.Router();
-const user1 = User
+// const user = User
+const { body, validationResult } = require('express-validator');
 
-//  CREATE A USER USING :POST "/api/auth". Doesn't require auth
-const Schema = mongoose;
-router.post('/',(req,res)=>{
-    console.log(req.body)
-    const user1 = User(req.body)
-    user1.save() 
-    res.send(req.body)
+// creating a user
+router.post('/',[
+    body('name','name is not defined').isLength({ min: 3 }),
+    body('email').isEmail(),
+    body('password').isLength({ min: 5 }),
+] ,(req, res) => { 
+    // console.log(req.body)
+    const errors = validationResult(req);
 
+    if (!errors.isEmpty()) {
+        return res.status(400).json({ errors: errors.array() })
+    }
+    User.create({
+        name: req.body.name,
+        email: req.body.email,
+        password: req.body.password,
+      }).then(user => res.json(user)).catch(error=>console.log(error))
 })
+
 module.exports = router ;
