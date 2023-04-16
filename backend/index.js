@@ -6,7 +6,10 @@ const app = express()
 const port = 5000 
 
 app.use(express.json())
-app.use('/api/auth/',require('./routes/auth'))
+
+/*(/api/auth)-->idhr middleware function exceute hoga ,(./ routes/auth)--> idhr middleware function hy */
+app.use('/api/auth',require('./routes/auth')) 
+
 app.get('/', (req, res) => {
   res.send('Hello World!')
 })
