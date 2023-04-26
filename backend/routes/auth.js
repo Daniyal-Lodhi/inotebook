@@ -3,11 +3,13 @@ const User = require('../models/User')
 const router = express.Router();
 var bcrypt = require('bcryptjs');
 var jwt = require('jsonwebtoken');
-
-
+var fetchUser = require('../middleware/fetchuser');
 const { body, validationResult } = require('express-validator');
 const JWT_SECRET = "myNameIsDaniyalLodhi!!"
-/* (/createUser)--> /api/auth k bad ye path hoga like /api/auth/createUser  , No login requred*/
+
+
+
+// ROUTE 1: Creating user using  /api/auth/createUser  , No login requred
 router.post('/createUser',[
     body('name','name is not defined').isLength({ min: 3 }),
     body('email').isEmail(),
@@ -40,11 +42,11 @@ router.post('/createUser',[
     var authToken = jwt.sign(data, JWT_SECRET);
     res.json({authToken})
   }catch(error){
-    res.status(500).json("error")
+    res.status(500).json("internal server error")
   }}
 );
 
-/* (/login)--> /api/auth k bad ye path hoga like /api/auth/createUser  , No login requred*/
+// ROUTE 2 :(login) using  /api/auth/createUser  , No login requred
 
 router.post('/login',[
   body('email').isEmail(),
@@ -76,7 +78,20 @@ async (req, res) => {
       var authToken = jwt.sign(data, JWT_SECRET);
       res.json({authToken})
     }catch(error){
-      res.status(500).json("error")
+      res.status(500).json("internal server error")
     }
 })
+
+// ROUTE 3 :geting loggedin user details  using  /api/auth/getuser  , login requred
+
+router.post('/getuser',fetchUser ,
+
+async (req, res) => {
+try {
+  let userId = req.user.id 
+   let user = await User.findById(userId).select("-password") /* "-password"so password should not be provided in details*/
+   res.send(user)
+} catch (error) {
+  es.status(500).json("internal server error")
+}})
 module.exports = router
