@@ -30,7 +30,7 @@ const NoteState = (props)=>{
       "date": "2023-04-20T22:46:10.774Z",
       "__v": 0
     },{
-      "_id": "6441c0b2219baae5e87f56f1",
+      "_id": "6441c0b2f219baaeff5e87f56f1",
       "user": "643c63af7ef5b872b145f426",
       "title": "superman",
       "description": "my Note",
@@ -38,7 +38,7 @@ const NoteState = (props)=>{
       "date": "2023-04-20T22:46:10.774Z",
       "__v": 0
     },{
-      "_id": "6441c0b2219baae5e87f56f1",
+      "_id": "6441c0b2219baaffe5e87f56f1",
       "user": "643c63af7ef5b872b145f426",
       "title": "superman",
       "description": "my Note",
