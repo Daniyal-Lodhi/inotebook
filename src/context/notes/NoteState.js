@@ -24,8 +24,8 @@ const NoteState = (props) => {
 
 
   // Add Note
-  const addNote = async (title, description, tag) => {
-    const response = await fetch(`${host}/api/notes/createnote`, {
+  const addNote = async (title, description, tag) => { 
+    await fetch(`${host}/api/notes/createnote`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -39,32 +39,31 @@ const NoteState = (props) => {
 
   }
   // delete Note
-  const deleteNote = async (id) => {
-    const response = await fetch(`${host}/api/notes/deletenote/${id}`, {
-      method: "DELETE", 
-      headers: {
-        "Content-Type": "application/json",
-        "auth-token": localStorage.getItem('token') 
-      },
-    });
-    // const deleted = await response.json()
-    getNotes()
-  }
+ const deleteNote = async (id) => {
+  await fetch(`${host}/api/notes/deletenote/${id}`, {
+    method: "DELETE",
+    headers: {
+      "Content-Type": "application/json",
+      "auth-token": localStorage.getItem('token')
+    },
+  });
+  getNotes();
+}
+
   // edit Note
-  const editNote = async (id,title, description, tag) => {
-    const response = await fetch(`${host}/api/notes/updatenote/${id}`, {
+  const editNote = async (id, title, description, tag) => {
+    await fetch(`${host}/api/notes/updatenote/${id}`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
         "auth-token": localStorage.getItem('token') 
       },
-      body: JSON.stringify({title,description,tag}) 
+      body: JSON.stringify({title, description, tag}) 
     });
-    console.log("Note Updated")
-    getNotes()
-
-
+    console.log("Note Updated");
+    getNotes();
   }
+  
   
   
   
