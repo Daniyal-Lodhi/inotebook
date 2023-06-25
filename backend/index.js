@@ -4,7 +4,7 @@ const express = require('express')
 var cors = require('cors')
 connectToMongo()
 const app = express()
-const port = 4000;
+const port = 5000;
 app.use(cors())
 
 app.use(express.json())
@@ -17,4 +17,4 @@ app.listen(port, () => {
   console.log(`INotebook app listening on port ${port}`);
 });
 
- 
+module.exports = app;

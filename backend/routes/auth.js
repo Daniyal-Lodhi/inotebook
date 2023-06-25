@@ -100,4 +100,4 @@ try {
 } catch (error) {
   es.status(500).json("internal server error")
 }})
-module.exports = router
+module.exports = router;
