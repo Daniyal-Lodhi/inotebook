@@ -3,8 +3,8 @@ import { useNavigate } from 'react-router-dom';
 const Login = (props) => {
 
     const {showAlert} = props 
-    // const host = "http://localhost:5000";
-    const host = window.location.origin;
+    const host = "http://localhost:5000";
+    // const host = window.location.origin;
     const navigate = useNavigate(); 
     
     const [credentials, setCredentials] = useState({ email: "", password: "" });
@@ -13,7 +13,7 @@ const Login = (props) => {
     } 
 
     const onSubmit = async (e) => {
-        e.preventDefault();
+        e.preventDefault(); 
         const response = await fetch(`${host}/api/auth/login`, {
             method: "POST",
             headers: {
