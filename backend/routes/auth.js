@@ -44,7 +44,7 @@ router.post('/createUser',[
     var authToken = jwt.sign(data, JWT_SECRET);
     success = true ;
     res.json({success,authToken})
-  }catch(error){
+  }  catch(error){
     res.status(500).json("internal server error")
   }}
 );
@@ -68,11 +68,11 @@ async (req, res) => {
       var success = false
       let user = await User.findOne({email})
       if(!user){
-        res.status('404').send({success,error:"please login with correct credentials"})
+        res.status(404).send({success,error:"please login with correct credentials"})
       }
       const passCompare = await bcrypt.compare(password,user.password)
       if(!passCompare){
-        res.status('404').send({success,error:"please login with correct credentials"})
+        res.status(404).send({success,error:"please login with correct credentials"})
       }
       let data = {
         user:{

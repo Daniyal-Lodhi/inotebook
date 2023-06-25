@@ -23,7 +23,7 @@ const Login = (props) => {
         const json = await response.json()
         console.log(json)
         if(json.success){
-            localStorage.setItem('token',json.authtoken)
+            localStorage.setItem('token',json.authToken)
             navigate('/')
             showAlert('success',"Logged in Successfull")
             }
@@ -39,6 +39,7 @@ const Login = (props) => {
 
         <div className='container'>
             <form className='container'>
+                <h1>Login to continue to iNotebook</h1>
                 <div className="mb-3 ">
                     <label htmlFor="email" className="form-label">Email address</label>
                     <input type="email" value={credentials.email} autoComplete='current-email' className="form-control" onChange={onChange} id="email" name='email' aria-describedby="emailHelp" />
@@ -49,7 +50,7 @@ const Login = (props) => {
                 </div>
                 <button type="submit" className="btn btn-primary" disabled = {credentials.password==""} onClick={onSubmit}>Log In</button>
             </form>
-        </div>
+        </div> 
     )
 }
 

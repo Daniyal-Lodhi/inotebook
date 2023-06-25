@@ -13,9 +13,9 @@ const NoteState = (props) => {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
-        "auth-token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjQzYzYzYWY3ZWY1Yjg3MmIxNDVmNDI2In0sImlhdCI6MTY4MTg2MTg1MH0.ck375SCVTB24_NzUSmkQtgehZGnvOSR-FfX3rVRVfN0" 
+        "auth-token": localStorage.getItem('token') 
       }
-    });
+    }); 
     const json = await response.json();
     // console.log(json)
     setNotes(json)
@@ -29,7 +29,7 @@ const NoteState = (props) => {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        "auth-token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjQzYzYzYWY3ZWY1Yjg3MmIxNDVmNDI2In0sImlhdCI6MTY4MTg2MTg1MH0.ck375SCVTB24_NzUSmkQtgehZGnvOSR-FfX3rVRVfN0" 
+        "auth-token": localStorage.getItem('token') 
       },
       body: JSON.stringify({title,description,tag})
     });
@@ -41,10 +41,10 @@ const NoteState = (props) => {
   // delete Note
   const deleteNote = async (id) => {
     const response = await fetch(`${host}/api/notes/deletenote/${id}`, {
-      method: "DELETE",
+      method: "DELETE", 
       headers: {
         "Content-Type": "application/json",
-        "auth-token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjQzYzYzYWY3ZWY1Yjg3MmIxNDVmNDI2In0sImlhdCI6MTY4MTg2MTg1MH0.ck375SCVTB24_NzUSmkQtgehZGnvOSR-FfX3rVRVfN0" 
+        "auth-token": localStorage.getItem('token') 
       },
     });
     // const deleted = await response.json()
@@ -56,9 +56,9 @@ const NoteState = (props) => {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
-        "auth-token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjQzYzYzYWY3ZWY1Yjg3MmIxNDVmNDI2In0sImlhdCI6MTY4MTg2MTg1MH0.ck375SCVTB24_NzUSmkQtgehZGnvOSR-FfX3rVRVfN0" 
+        "auth-token": localStorage.getItem('token') 
       },
-      body: JSON.stringify({title,description,tag})
+      body: JSON.stringify({title,description,tag}) 
     });
     console.log("Note Updated")
     getNotes()

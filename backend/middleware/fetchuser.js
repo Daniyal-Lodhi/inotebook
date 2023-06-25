@@ -13,6 +13,5 @@ const fetchUser = (req, res, next)=>{
     } catch (error) {
         res.status(401).send({error: "please aurthenticate using a valid token"})
     }     
-    
 }
 module.exports = fetchUser

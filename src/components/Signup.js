@@ -19,11 +19,13 @@ const Signup = (props) => {
                 "Content-Type": "application/json",
             },
             body: JSON.stringify({ name:credentials.name ,email: credentials.email, password: credentials.password })
-        });
+            
+        }
+        );
         const json = await response.json()
         console.log(json)
         if(json.success){
-            localStorage.setItem('token',json.authtoken)
+            localStorage.setItem('token',json.authToken)
             navigate('/') 
             showAlert('success',"Sign up Successfull")
                 }
@@ -31,6 +33,7 @@ const Signup = (props) => {
             showAlert('danger'," invalid"+ " "+json.errors[0].param)
 
         }
+        
 
     }
 
@@ -40,7 +43,9 @@ const Signup = (props) => {
         <div className='container'>
 
             <form className='container'>
-              
+            <h1>New to iNotebook? lets make an account</h1>
+
+                
                 <div className="mb-3 ">
                     <label htmlFor="name" className="form-label">Name</label>
                     <input type="name" value={credentials.name} className="form-control" onChange={onChange} id="name" name='name' aria-describedby="emailHelp" required/>
@@ -62,7 +67,7 @@ const Signup = (props) => {
                     <input type="password" value={credentials.cpassword} className="form-control" onChange={onChange}  name='cpassword' id="cpassword" minLength={5} required />
                 </div>
 
-                <button type="submit" className="btn btn-primary" onClick={onSubmit} disabled = {credentials.password==="" || credentials.password!== credentials.cpassword} >Sign up</button>
+                <button  className="btn btn-primary" onClick={onSubmit} disabled = {credentials.password==="" || credentials.password!== credentials.cpassword} >Sign up</button>
             </form>
         </div>
     )
