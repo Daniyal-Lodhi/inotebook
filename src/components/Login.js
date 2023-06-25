@@ -9,7 +9,7 @@ const Login = (props) => {
     const [credentials, setCredentials] = useState({ email: "", password: "" });
     const onChange = (e) => {
         setCredentials({ ...credentials, [e.target.name]: e.target.value })
-    }
+    } 
 
     const onSubmit = async (e) => {
         e.preventDefault();
