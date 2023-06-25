@@ -13,18 +13,15 @@ const Notes = () => {
     const onChange = (e) => {
         setNote({ ...note, [e.target.name]: e.target.value })
     }
-    const handleSubmit = (e) => {
-        e.preventDefault();
-    }
+   
     useEffect(() => {
-        if (localStorage.getItem('token')){
+        if (localStorage.getItem('token')) {
             getNotes();
+        } else {
+            navigate('/Login');
         }
-        else{
-            navigate('/Login')
-        }
-    }, []
-    )
+    }, [getNotes, navigate]);
+    
     const updateNote = (currentNote) => {
         ref.current.click()
         setNote({ id: currentNote._id, etitle: currentNote.title, edescription: currentNote.description, etag: currentNote.tag })

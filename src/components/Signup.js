@@ -30,7 +30,7 @@ const Signup = (props) => {
             showAlert('success',"Sign up Successfull")
                 }
         else{
-            showAlert('danger'," invalid"+ " "+json.errors[0].param)
+            showAlert('danger', `invalid ${json.errors[0].param}`)
 
         }
         
