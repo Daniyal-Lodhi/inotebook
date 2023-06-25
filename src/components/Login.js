@@ -2,9 +2,10 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 const Login = (props) => {
 
-    const {showAlert} = props
-    const host = "http://localhost:5000";
-    const navigate = useNavigate();
+    const {showAlert} = props 
+    // const host = "http://localhost:5000";
+    const host = window.location.origin;
+    const navigate = useNavigate(); 
     
     const [credentials, setCredentials] = useState({ email: "", password: "" });
     const onChange = (e) => {

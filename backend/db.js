@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-const URI = 'mongodb://127.0.0.1:27017/mydatabase'
+const URI = 'mongodb+srv://daniyallodhi25:daniyal123@cluster0.eczrsa5.mongodb.net/'
 
 const connectToMongo = async()=>{
         mongoose.connect(URI)

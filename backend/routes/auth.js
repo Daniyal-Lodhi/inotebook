@@ -84,7 +84,7 @@ async (req, res) => {
       res.json({success,authToken})
     }catch(error){
       success = false
-      res.status(500).json(success,"internal server error")
+      res.status(500).json({success,message:"internal server error"})
     }
 })
 
