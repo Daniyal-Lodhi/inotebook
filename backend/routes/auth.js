@@ -13,7 +13,7 @@ const JWT_SECRET = "myNameIsDaniyalLodhi!!"
 router.post('/createUser',[
     body('name','name is not defined').isLength({ min: 3 }),
     body('email').isEmail(),
-    body('password').isLength({ min: 5 }),
+    body('password').isLength({ min: 5 }),  
 ] ,
   async (req, res) => {
     // Finds the validation errors in this request and wraps them in an object with handy functions
@@ -24,13 +24,13 @@ router.post('/createUser',[
       return res.status(400).json({ success,errors: errors.array() });
     }
     try{
-      // var salt = await bcrypt.genSaltSync(10);
+      // var salt = await bcrypt.genSaltSync(10); 
       // const hashedPass = await bcrypt.hash(req.body.password, salt )
     let user = await User.findOne({email:req.body.email})
     if(user){
         return res.status(400).json({error:"Email already registered"})  
         }
-        user = await User.create({
+        user = await User.create({  
             name: req.body.name,
             email: req.body.email,
             password: req.body.password,
@@ -71,7 +71,8 @@ async (req, res) => {
         res.status(404).send({success,error:"please login with correct credentials"})
       }
       // const passCompare = await bcrypt.compare(password,user.password)
-      if(password!=user.password){
+
+      if(password!== user.password){
         res.status(404).send({success,error:"please login with correct credentials"})
       }
       let data = {
@@ -84,7 +85,7 @@ async (req, res) => {
       res.json({success,authToken})
     }catch(error){
       success = false
-      res.status(500).json({success,message:"internal server error"})
+      res.status(500).json(success,"internal server error")
     }
 })
 
@@ -100,4 +101,4 @@ try {
 } catch (error) {
   es.status(500).json("internal server error")
 }})
-module.exports = router;
+module.exports = router

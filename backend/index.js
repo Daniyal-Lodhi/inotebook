@@ -15,6 +15,6 @@ app.use('/api/notes', require('./routes/notes'))
 
 app.listen(port, () => {
   console.log(`INotebook app listening on port ${port}`);
-});
+}); 
  
 module.exports = app;
