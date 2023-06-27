@@ -99,6 +99,6 @@ try {
    let user = await User.findById(userId).select("-password") /* "-password"so password should not be provided in details*/
    res.send(user)
 } catch (error) {
-  es.status(500).json("internal server error")
+  es.status(500).json("internal server error") 
 }})
 module.exports = router
