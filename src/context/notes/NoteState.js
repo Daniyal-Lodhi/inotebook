@@ -5,7 +5,7 @@ import { useState } from "react";
 const NoteState = (props) => {
   const [notes, setNotes] = useState([])
 
-  const host = "http://localhost:5000";
+  const host = "https://inotebook-backend-rho.vercel.app";
 
   // Get notes
   const getNotes = async () => {

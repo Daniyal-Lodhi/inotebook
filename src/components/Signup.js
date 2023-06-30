@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 const Signup = (props) => {
-    const host = "http://localhost:5000";
+    // const host = "http://localhost:5000";
     const navigate = useNavigate();
     const {showAlert}  = props ;
     
@@ -13,7 +13,7 @@ const Signup = (props) => {
 
     const onSubmit = async (e) => {
         e.preventDefault();
-        const response = await fetch(`${host}/api/auth/createUser`, {
+        const response = await fetch(`https://inotebook-backend-rho.vercel.app/api/auth/createuser`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",

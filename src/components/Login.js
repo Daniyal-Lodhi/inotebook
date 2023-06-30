@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 const Login = (props) => {
 
     const {showAlert} = props 
-    const host = "http://localhost:5000";
+    // const host = "http://localhost:5000";
     // const host = window.location.origin;
     const navigate = useNavigate(); 
     
@@ -14,7 +14,7 @@ const Login = (props) => {
 
     const onSubmit = async (e) => {
         e.preventDefault(); 
-        const response = await fetch(`http://localhost:5000/api/auth/login`, {
+        const response = await fetch(`https://inotebook-backend-rho.vercel.app/api/auth/login`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",

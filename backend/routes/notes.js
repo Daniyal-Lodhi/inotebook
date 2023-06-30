@@ -10,7 +10,7 @@ router.get('/fetchallnotes', fetchUser, async (req, res) => {
       const notes = await Notes.find({ user: req.user.id });
        res.json(notes);
 })
-  
+   
 
 // ROUTE 2 : create Note  /api/auth/createnote  , login requred
 router.post('/createnote',fetchUser,[

@@ -33,15 +33,15 @@ router.post('/createUser',[
         user = await User.create({  
             name: req.body.name,
             email: req.body.email,
-            password: req.body.password,
+            password: req.body.password, 
           })
     console.log("User Created")
     let data = {
       user:{
         id : user.id
-      }
+      } 
     }
-    var authToken = jwt.sign(data, JWT_SECRET);
+    var authToken = jwt.sign(data, JWT_SECRET); 
     success = true ;
     res.json({success,authToken})
   }  catch(error){
@@ -85,7 +85,7 @@ async (req, res) => {
       res.json({success,authToken})
     }catch(error){
       success = false
-      res.status(500).json(success,"internal server error")
+      res.status(500).json({success,error:"internal server error"})
     }
 })
 
